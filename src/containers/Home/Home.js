@@ -1,38 +1,41 @@
-import React, { useEffect, useState } from "react";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import "./Home.css";
+import { useEffect, useState } from "react";
 
-const Home = () => {
-  const API_KEY = "4ac96a0630f3248e38c0bf5f236cd3c4";
-  const BASE_URL = "https://api.themoviedb.org/3";
+export default function Hpme() {
+  const [player, setPlayer] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const [movies, setMovies] = useState([]);
+  const API_KEY = "FF122BAA0EF62776B34FCAB3377A5694";
+  const STEAM_ID = "76561198073202306";
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    async function fetchPlayer() {
       try {
-        const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&page=1`);
+        const url = `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${API_KEY}&steamids=${STEAM_ID}`;
+
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Failed to fetch Steam API");
+        }
+
         const data = await response.json();
-        setMovies(data.results || []);
-      } catch (error) {
-        console.error("Error fetching games:", error);
+        setPlayer(data.response.players[0]);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    };
-    fetchMovies();
-  },[]);
+    }
+
+    fetchPlayer();
+  }, []);
+
+  if (loading) return <div>Loading…</div>;
+  if (!player) return <div>No data</div>;
 
   return (
-    <div className="home">
-      <h2>Popular Games</h2>
-      <div className="product-list">
-        {movies.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          movies.map((movie) => <ProductCard key={movie.id} movie={movie} />)
-        )}
-      </div>
+    <div>
+      <h2>{player.personaname}</h2>
+      <img src={player.avatarfull} alt="Avatar" />
     </div>
   );
-};
-
-export default Home;
+}
