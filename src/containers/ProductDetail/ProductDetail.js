@@ -38,30 +38,31 @@ const ProductDetail = () => {
   
   return (
     <div className="product-detail">
-      {/* centered thumbnail on its own line */}
-      <div className="product-detail__image-centered">
-        <div className="product-detail__image">
-          <img src={game.image} alt={game.title} loading="lazy" />
+      <div className="product-detail__top">
+        <div className="product-detail__left">
+          <div className="product-detail__image">
+            <img src={game.image} alt={game.title} loading="lazy" />
+          </div>
+
+          <div className="product-detail__description">
+            <h2>{game.title}</h2>
+            <p className="description">{game.description}</p>
+          </div>
         </div>
+
+        <aside className="product-detail__meta">
+          <p><strong>Rating:</strong> {game.rating}</p>
+          <p><strong>Release Date:</strong> {game.release_date}</p>
+          <p><strong>Developer:</strong> {game.developer}</p>
+          <p><strong>Publisher:</strong> {game.publisher}</p>
+          <p><strong>Tags:</strong> {game.tags.join(', ')}</p>
+
+          <p className="price">Price: {displayPrice}</p>
+          <button className="btn add-btn" onClick={handleAddToCart}>Add to Wishlist</button>
+        </aside>
       </div>
 
-      {/* description and charts on same row */}
-      <div className="product-detail__row">
-        <div className="product-detail__info">
-        <h2>{game.title}</h2>
-        <p className="description">{game.description}</p>
-
-        <p><strong>Rating:</strong> {game.rating}</p>
-        <p><strong>Release Date:</strong> {game.release_date}</p>
-        <p><strong>Developer:</strong> {game.developer}</p>
-        <p><strong>Publisher:</strong> {game.publisher}</p>
-        <p><strong>Tags:</strong> {game.tags.join(', ')}</p>
-
-        <p className="price">Price: {displayPrice}</p>
-        <button className="btn add-btn" onClick={handleAddToCart}>Add to Wishlist</button>
-        </div>
-
-        {/* charts on the right column (same line as description) */}
+      <div className="product-detail__charts-row">
         <div className="product-detail__chart-side">
           {game.charts && Array.isArray(game.charts) && game.charts.length > 0 ? (
             <div className="product-detail__chart product-detail__chart-grid">
@@ -71,7 +72,6 @@ const ProductDetail = () => {
                 </div>
               ))}
 
-              {/* price history charts show below the avg-player charts for paid games */}
               {game.priceCharts && Array.isArray(game.priceCharts) && game.priceCharts.length > 0 && (
                 <div className="price-charts">
                   {game.priceCharts.map((src, idx) => (

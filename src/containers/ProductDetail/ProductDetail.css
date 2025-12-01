@@ -13,7 +13,7 @@
   gap: 40px;
   align-items: flex-start;
   width: 100%;
-  max-width: 1120px; /* image (300) + info + chart */
+  max-width: 1320px;
 }
 
 .product-detail__image-centered {
@@ -24,11 +24,12 @@
 }
 
 .product-detail__image {
-  flex: 0 0 560px;
+  width: 100%;
+  max-width: 680px;
 }
 
 .product-detail__image img {
-  width: 560px;
+  width: 100%;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   display: block;
@@ -42,21 +43,35 @@
   align-items: stretch;
 }
 
-.product-detail__info {
-  flex: 1 1 480px;
-  max-width: 720px;
+.product-detail__left {
+  flex: 0 0 680px;
   display: flex;
   flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.product-detail__description {
+  width: 100%;
+  max-width: 640px;
+}
+
+.product-detail__meta {
+  flex: 1 1 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 320px;
 }
 
 .product-detail__chart-side {
-  flex: 0 0 560px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
-.product-detail__info h2 {
+.product-detail__description h2 {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
@@ -85,9 +100,9 @@
 
 .product-detail__chart img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 460px;
   border-radius: 8px;
+  object-fit: contain;
 }
 
 .product-detail__chart-grid {
@@ -95,6 +110,13 @@
   grid-template-columns: 1fr;
   gap: 20px;
   align-items: stretch;
+  width: 100%;
+}
+
+.product-detail__charts-row {
+  width: 100%;
+  max-width: 1320px;
+  margin: 18px auto 0;
 }
 
 .product-detail__chart-grid .chart-item img {
@@ -110,11 +132,17 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
+  width: 100%;
+}
+
+.price-chart-item {
+  height: 720px;
+  display: block;
 }
 
 .price-chart-item img {
   width: 100%;
-  height: 140px;
+  height: 100%;
   object-fit: contain;
   display: block;
   border-radius: 6px;
@@ -139,6 +167,13 @@
 
 .add-btn {
   background-color: #28a745;
+}
+
+.product-detail__meta .add-btn {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.95rem;
+  width: auto;
+  align-self: flex-start;
 }
 
 .add-btn:hover {
