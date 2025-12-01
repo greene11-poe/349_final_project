@@ -10,6 +10,7 @@ export const steamGames = [
     developer: "Valve",
     publisher: "Valve",
     tags: ["FPS", "Shooter", "Multiplayer"],
+    charts: ["/charts/counter-strike-2_avg_players.png"]
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ export const steamGames = [
     developer: "Valve",
     publisher: "Valve",
     tags: ["Free to Play", "MOBA", "Multiplayer"],
+    charts: ["/charts/dota2_avg_players.png"]
   },
   {
     id: 3,
@@ -34,6 +36,8 @@ export const steamGames = [
     developer: "Embark Studios",
     publisher: "Embark Studios",
     tags: ["Extraction Shooter", "PvP", "Multiplayer"],
+    charts: ["/charts/arc-raiders_avg_players.png"],
+    priceCharts: ["/charts/arc-raiders_price_history.png"]
   },
   {
     id: 4,
@@ -46,6 +50,8 @@ export const steamGames = [
     developer: "Battlefield Studios",
     publisher: "Electronic Arts",
     tags: ["FPS", "Multiplayer", "Action"],
+    charts: ["/charts/battlefield6_avg_players.png"],
+    priceCharts: ["/charts/battlefield6_price_history.png"]
   },
   {
     id: 5,
@@ -58,6 +64,7 @@ export const steamGames = [
     developer: "PUBG Corporation",
     publisher: "KRAFTON. Inc.",
     tags: ["Survival", "Shooter", "Battle Royale"],
+    charts: ["/charts/pubg_avg_players.png"]
   },
   {
     id: 6,
@@ -70,6 +77,7 @@ export const steamGames = [
     developer: "Everston Studio",
     publisher: "NetEase Games",
     tags: ["Open World", "Multiplayer", "Free to Play"],
+    charts: ["/charts/where-winds-meet_avg_players.png"]
   },
   {
     id: 7,
@@ -82,6 +90,8 @@ export const steamGames = [
     developer: "Facepunch Studios",
     publisher: "Facepunch Studios",
     tags: ["Survival", "Crafting", "Multiplayer"],
+    charts: ["/charts/rust_avg_players.png"],
+    priceCharts: ["/charts/rust_price_history.png"]
   },
   {
     id: 8,
@@ -94,18 +104,21 @@ export const steamGames = [
     developer: "NetEase Games",
     publisher: "NetEase Games",
     tags: ["Free to Play", "Multiplayer", "Hero Shooter"],
+    charts: ["/charts/marvel-rivals_avg_players.png"]
   },
   {
     id: 9,
-    title: "Grand Theft Auto V Legacy",
+    title: "Grand Theft Auto V Enhanced",
     image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1753979045",
     price: 29.99,
-    description: "Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.",
+    description: "Experience entertainment blockbusters Grand Theft Auto V and Grand Theft Auto Online — now upgraded for a new generation with stunning visuals, faster loading, 3D audio, and more, plus exclusive content for GTA Online players.",
     rating: "Very Positive",
-    release_date: "Apr 14, 2015",
+    release_date: "March 4 2025",
     developer: "Rockstar North",
     publisher: "Rockstar Games",
     tags: ["Open World", "Action", "Multiplayer"],
+    charts: ["/charts/gta-v_enhanced_avg_players.png"],
+    priceCharts: ["/charts/gta-v_enhanced_price_history.png"]
   },
   {
     id: 10,
@@ -118,5 +131,6 @@ export const steamGames = [
     developer: "Treyarch",
     publisher: "Activision",
     tags: ["FPS", "Multiplayer", "Shooter"],
+    charts: ["/charts/call-of-duty_avg_players.png"]
   },
 ];

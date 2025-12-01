@@ -38,13 +38,16 @@ const ProductDetail = () => {
   
   return (
     <div className="product-detail">
-      <div className="product-detail__image">
-        <img
-          src={game.image}
-          alt={game.title}
-        />
+      {/* centered thumbnail on its own line */}
+      <div className="product-detail__image-centered">
+        <div className="product-detail__image">
+          <img src={game.image} alt={game.title} loading="lazy" />
+        </div>
       </div>
-      <div className="product-detail__info">
+
+      {/* description and charts on same row */}
+      <div className="product-detail__row">
+        <div className="product-detail__info">
         <h2>{game.title}</h2>
         <p className="description">{game.description}</p>
 
@@ -56,6 +59,36 @@ const ProductDetail = () => {
 
         <p className="price">Price: {displayPrice}</p>
         <button className="btn add-btn" onClick={handleAddToCart}>Add to Wishlist</button>
+        </div>
+
+        <div className="product-detail__chart-side">
+          {game.charts && Array.isArray(game.charts) && game.charts.length > 0 ? (
+            <div className="product-detail__chart product-detail__chart-grid">
+              {game.charts.map((src, i) => (
+                <div className="chart-item" key={i}>
+                  <img src={src} alt={`${game.title} chart ${i + 1}`} loading="lazy" />
+                </div>
+              ))}
+
+              {/* price history charts show below the avg-player charts for paid games */}
+              {game.priceCharts && Array.isArray(game.priceCharts) && game.priceCharts.length > 0 && (
+                <div className="price-charts">
+                  {game.priceCharts.map((src, idx) => (
+                    <div className="price-chart-item" key={idx}>
+                      <img src={src} alt={`${game.title} price history ${idx + 1}`} loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            game.chartImage && (
+              <div className="product-detail__chart">
+                <img src={game.chartImage} alt={`${game.title} chart`} loading="lazy" />
+              </div>
+            )
+          )}
+        </div>
       </div>
     </div>
   );

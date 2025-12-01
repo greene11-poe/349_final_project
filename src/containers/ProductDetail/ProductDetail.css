@@ -1,3 +1,4 @@
+
 .product-detail {
   display: flex;
   flex-wrap: wrap;
@@ -7,14 +8,52 @@
   padding: 2rem;
 }
 
+.product-detail__top {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1120px; /* image (300) + info + chart */
+}
+
+.product-detail__image-centered {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.product-detail__image {
+  flex: 0 0 560px;
+}
+
 .product-detail__image img {
-  width: 300px;
+  width: 560px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+.product-detail__row { 
+  display:flex; 
+  gap: 40px; 
+  width: 100%;
+  max-width: 1320px;
+  align-items: stretch; /* ensures the chart column stretches to the height of the info column */
 }
 
 .product-detail__info {
-  max-width: 500px;
+  flex: 1 1 480px;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-detail__chart-side {
+  flex: 0 0 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .product-detail__info h2 {
@@ -33,6 +72,53 @@
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 2rem;
+}
+
+.product-detail__chart {
+  width: 100%;
+  margin-top: 0.0rem;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.product-detail__chart img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.product-detail__chart-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: stretch; /* stretch child items to match height */
+}
+
+.product-detail__chart-grid .chart-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.3);
+  object-fit: contain;
+}
+
+.price-charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.price-chart-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.3);
 }
 
 /* Reuse global button style */
@@ -59,4 +145,33 @@
 
 .add-btn:hover {
   background-color: #1e7e34;
+}
+
+/* small screens: stack the layout vertically */
+@media (max-width: 960px) {
+  .product-detail__top {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .product-detail__image-centered,
+  .product-detail__info,
+  .product-detail__chart-side {
+    width: 100%;
+    max-width: 720px;
+  }
+
+  /* place chart items under the info on small screens */
+  .product-detail__chart-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+/* make chart image fill its container height so it matches description */
+.product-detail__chart img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
 }
